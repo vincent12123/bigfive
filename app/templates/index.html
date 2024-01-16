@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Big Five Personality Traits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .profile-card {
+            background: #FEECE9;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .score-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #FF7C7C, #FFB6B6);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F7DAD9]">
+    <div class="container mx-auto p-5">
+        <header class="flex justify-between items-center py-3">
+            <div class="text-[#2A324B] text-lg font-bold">The Big Five Personality Test</div>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#user">User</a></li>
+                    <li><a href="#account">Account</a></li>
+                    <li><a href="#test">Test</a></li>
+                    <li><a href="#efficiency">Efficiency</a></li>
+                    <li><a href="#mark">Mark</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+            </nav>
+            <button class="bg-[#FF868E] text-white px-4 py-1 rounded-full">Premium</button>
+        </header>
+
+        <main>
+            <div class="text-center my-12">
+                <h1 class="text-5xl font-bold text-[#2A324B]">Discover Your Personality</h1>
+                <p class="text-[#2A324B] mt-4">Learn about your unique personality traits with the Big Five Personality Test. Gain insights into your character and understand how it influences your interactions and decisions.</p>
+            </div>
+        
+            <!-- Personality Trait Scores -->
+            <section class="flex justify-around items-center mb-12">
+                <div class="profile-card">
+                    <div class="score-circle">5</div>
+                    <p class="text-sm mt-3">Openness</p>
+                </div>
+                <div class="profile-card">
+                    <div class="score-circle">7</div>
+                    <p class="text-sm mt-3">Conscientiousness</p>
+                </div>
+                <div class="profile-card">
+                    <div class="score-circle">5</div>
+                    <p class="text-sm mt-3">Extraversion</p>
+                </div>
+                <div class="profile-card">
+                    <div class="score-circle">5</div>
+                    <p class="text-sm mt-3">Agreeableness</p>
+                </div>
+                <div class="profile-card">
+                    <div class="score-circle">5</div>
+                    <p class="text-sm mt-3">Neuroticism</p>
+                </div>
+            </section>
+        
+            <!-- Information Cards -->
+            <section class="grid grid-cols-2 gap-8 mb-12">
+                <div class="profile-card flex flex-col items-center">
+                    <img src="https://placehold.co/100x100" alt="Illustration for Test Details" class="rounded-full">
+                    <div class="text-center">
+                        <h3 class="text-lg font-bold mt-2">Test Details</h3>
+                        <p class="text-sm mt-1">Detailed information about how the Big Five Personality Test works and what to expect.</p>
+                    </div>
+                </div>
+                <div class="profile-card flex flex-col items-center">
+                    <img src="https://placehold.co/100x100" alt="Illustration for Your Results" class="rounded-full">
+                    <div class="text-center">
+                        <h3 class="text-lg font-bold mt-2">Your Results</h3>
+                        <p class="text-sm mt-1">View and understand your test results and what they mean for your personality.</p>
+                    </div>
+                </div>
+                <div class="profile-card flex flex-col items-center">
+                    <img src="https://placehold.co/100x100" alt="Illustration for Personality Insights" class="rounded-full">
+                    <div class="text-center">
+                        <h3 class="text-lg font-bold mt-2">Personality Insights</h3>
+                        <p class="text-sm mt-1">Learn how your personality traits affect various aspects of your life and relationships.</p>
+                    </div>
+                </div>
+                <div class="profile-card flex flex-col items-center">
+                    <img src="https://placehold.co/100x100" alt="Illustration for Support" class="rounded-full">
+                    <div class="text-center">
+                        <h3 class="text-lg font-bold mt-2">Support</h3>
+                        <p class="text-sm mt-1">Get help and support regarding the test and any questions you might have.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+
+        <footer class="text-center py-4">
+            <p>&copy; 2024 Big Five Personality Test. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for Interactivity (Optional) -->
+    <!-- <script src="path/to/your/script.js"></script> -->
+</body>
+
+</html>
