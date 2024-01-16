@@ -17,4 +17,27 @@ class User(db.Model, UserMixin):
         self.password = generate_password_hash(password)
 
     def check_password(self, password):
-        return check_password_hash(self.password, password)    
+        return check_password_hash(self.password, password)
+
+class Dimension(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    questions = db.relationship('Question', backref='dimension', lazy=True)
+
+class Question(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    dimension_id = db.Column(db.Integer, db.ForeignKey('dimension.id'), nullable=False)
+    text = db.Column(db.String(200), nullable=False)
+    weight = db.Column(db.Integer, default=1)  # Opsional
+
+class Users(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    phone = db.Column(db.String(50), nullable=False)
+    responses = db.relationship('UserResponse', backref='users', lazy=True)
+
+class UserResponse(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    question_id = db.Column(db.Integer, db.ForeignKey('question.id'), nullable=False)
+    answer = db.Column(db.Integer, nullable=False)  # Asumsi jawaban dalam bentuk angka
