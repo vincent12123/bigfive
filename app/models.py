@@ -38,6 +38,6 @@ class Users(db.Model):
 
 class UserResponse(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # Koreksi di sini
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'), nullable=False)
     answer = db.Column(db.Integer, nullable=False)  # Asumsi jawaban dalam bentuk angka
