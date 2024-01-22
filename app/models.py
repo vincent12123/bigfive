@@ -3,41 +3,39 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
 
-class Book(db.Model):
+class User(db.Model):
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    author = db.Column(db.String(100))
-    
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
-    password = db.Column(db.String(120), nullable=False)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password_hash = db.Column(db.String(128))
 
     def set_password(self, password):
-        self.password = generate_password_hash(password)
+        self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):
-        return check_password_hash(self.password, password)
-
-class Dimension(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    questions = db.relationship('Question', backref='dimension', lazy=True)
-
+        return check_password_hash(self.password_hash, password)
+    
 class Question(db.Model):
+    __tablename__ = 'questions'
     id = db.Column(db.Integer, primary_key=True)
-    dimension_id = db.Column(db.Integer, db.ForeignKey('dimension.id'), nullable=False)
-    text = db.Column(db.String(200), nullable=False)
-    weight = db.Column(db.Integer, default=1)  # Opsional
+    question_text = db.Column(db.String(500), nullable=False)
+    trait = db.Column(db.String(50), nullable=False)
 
-class Users(db.Model):
+class Response(db.Model):
+    __tablename__ = 'responses'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    phone = db.Column(db.String(50), nullable=False)
-    responses = db.relationship('UserResponse', backref='users', lazy=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    question_id = db.Column(db.Integer, db.ForeignKey('questions.id'), nullable=False)
+    response = db.Column(db.Integer, nullable=False)
 
-class UserResponse(db.Model):
+class Result(db.Model):
+    __tablename__ = 'results'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # Koreksi di sini
-    question_id = db.Column(db.Integer, db.ForeignKey('question.id'), nullable=False)
-    answer = db.Column(db.Integer, nullable=False)  # Asumsi jawaban dalam bentuk angka
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    openness = db.Column(db.Float, nullable=False)
+    conscientiousness = db.Column(db.Float, nullable=False)
+    extraversion = db.Column(db.Float, nullable=False)
+    agreeableness = db.Column(db.Float, nullable=False)
+    neuroticism = db.Column(db.Float, nullable=False)
+    timestamp = db.Column(db.DateTime, nullable=False)

@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request
 from app import app, db, login_manager
-from app.models import Book, User, Dimension, Question
-#from flask_login import login_user, current_user, logout_user, login_required
+from app.models import  User, Question, Response, Result
+from flask_login import login_user, current_user, logout_user, login_required
 import random
 
 import os
@@ -16,8 +16,15 @@ def home():
     #books = Book.query.all()
     return render_template('index.html')
 
-@app.route('/questions')
-def questions():
-    all_questions = Question.query.all()
-    random.shuffle(all_questions)  # Mengacak urutan soal
-    return render_template('form.html', questions=all_questions)
+def get_questions():
+    # Mengambil semua pertanyaan dari database
+    questions = Question.query.all()
+    print(questions)  # Debugging: Cetak daftar pertanyaan
+    return questions
+
+@app.route('/questionnaire')
+def questionnaire():
+    questions = get_questions()
+    random_questions = random.sample(questions, min(len(questions), 10))  # mengambil 10 pertanyaan secara acak, atau kurang jika tidak ada cukup pertanyaan
+    return render_template('questionnaire.html', questions=random_questions)
+
