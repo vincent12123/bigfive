@@ -19,7 +19,6 @@ def home():
 def get_questions():
     # Mengambil semua pertanyaan dari database
     questions = Question.query.all()
-    print(questions)  # Debugging: Cetak daftar pertanyaan
     return questions
 
 @app.route('/questionnaire')
@@ -27,4 +26,5 @@ def questionnaire():
     questions = get_questions()
     random_questions = random.sample(questions, min(len(questions), 10))  # mengambil 10 pertanyaan secara acak, atau kurang jika tidak ada cukup pertanyaan
     return render_template('questionnaire.html', questions=random_questions)
+
 
