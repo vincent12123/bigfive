@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Add Question</title>
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>Questionnaire CRUD Operations</strong></li>
+        </ul>
+        <ul>
+            <li><a href="#">List Questions</a></li>
+            <li><a href="#">Add Question</a></li>
+            <!-- Other navigation links as required -->
+        </ul>
+    </nav>
+    <main class="container">
+        <h2>Add New Question</h2>
+        <form method="POST">
+            <label for="question_text">Question:</label>
+            <input type="text" id="question_text" name="question_text" placeholder="Enter the question" required>
+
+            <label for="trait">Trait:</label>
+            <input type="text" id="trait" name="trait" placeholder="Enter the trait" required>
+
+            <button type="submit">Add Question</button>
+        </form>
+    </main>
+    <footer class="container">
+        <small>
+            <a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a>
+        </small>
+    </footer>
+</body>
+</html>

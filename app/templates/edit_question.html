@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>CRUD UI</title>
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>CRUD Operations</strong></li>
+        </ul>
+        <ul>
+            <li><a href="#create">Create</a></li>
+            <li><a href="#read">Read</a></li>
+            <li><a href="#update">Update</a></li>
+            <li><a href="#delete" role="button">Delete</a></li>
+        </ul>
+    </nav>
+    <!-- ... navigation ... -->
+    <main class="container">
+        <h2>Edit Question</h2>
+        <form method="POST">
+            <label for="question_text">Question:</label>
+            <input type="text" id="question_text" name="question_text" value="{{ question.question_text }}" required>
+
+            <label for="trait">Trait:</label>
+            <input type="text" id="trait" name="trait" value="{{ question.trait }}" required>
+
+            <button type="submit">Update Question</button>
+        </form>
+    </main>
+    <!-- ... footer ... -->
+    <footer class="container">
+        <small>
+            <a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a>
+        </small>
+    </footer>
+</body>
+</html>

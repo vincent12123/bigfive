@@ -16,6 +16,45 @@ def home():
     #books = Book.query.all()
     return render_template('index.html')
 
+@app.route('/question/add', methods=['GET', 'POST'])
+def add_question():
+    if request.method == 'POST':
+        new_question = Question(
+            question_text=request.form['question_text'],
+            trait=request.form['trait']
+        )
+        db.session.add(new_question)
+        db.session.commit()
+        return redirect(url_for('list_questions'))
+    
+    return render_template('add_question.html')
+
+@app.route('/questions')
+def list_questions():
+    questions = Question.query.all()
+    return render_template('list_questions.html', questions=questions)
+
+@app.route('/question/edit/<int:question_id>', methods=['GET', 'POST'])
+def edit_question(question_id):
+    question = Question.query.get_or_404(question_id)
+
+    if request.method == 'POST':
+        question.question_text = request.form['question_text']
+        question.trait = request.form['trait']
+        db.session.commit()
+        return redirect(url_for('list_questions'))
+    
+    return render_template('edit_question.html', question=question)
+
+@app.route('/question/delete/<int:question_id>', methods=['POST'])
+def delete_question(question_id):
+    question = Question.query.get_or_404(question_id)
+    db.session.delete(question)
+    db.session.commit()
+    return redirect(url_for('list_questions'))
+
+
+
 def get_questions():
     # Mengambil semua pertanyaan dari database
     questions = Question.query.all()
