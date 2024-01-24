@@ -134,6 +134,14 @@
                 </div>
             </div>
             {% endfor %}
+            <div>
+                {% if page > 1 %}
+                    <a href="{{ url_for('questionnaire', page=page-1) }}">Sebelumnya</a>
+                {% endif %}
+                {% if page < total_pages %}
+                    <a href="{{ url_for('questionnaire', page=page+1) }}">Selanjutnya</a>
+                {% endif %}
+            </div>
             <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded shadow-lg hover:shadow transition duration-200 ease-in-out">
                 Submit
             </button>
